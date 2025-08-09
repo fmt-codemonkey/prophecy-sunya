@@ -230,21 +230,6 @@
   50% { opacity: 1; }
 }
 
-/* .scanLine {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background: linear-gradient(90deg, 
-    transparent 0%, 
-    var(--accent-cyan) 50%, 
-    transparent 100%
-  );
-  animation: scanMove 4s linear infinite;
-  box-shadow: 0 0 0px var(--glow-secondary);
-} */
-
 @keyframes scanMove {
   0% { transform: translateY(0vh); }
   100% { transform: translateY(100vh); }
@@ -538,6 +523,7 @@
   align-items: center;
   flex-wrap: wrap;
   justify-content: center;
+  margin-bottom: 3rem;
   animation: commandReveal 1s ease-out 2.5s both;
 }
 
@@ -619,6 +605,7 @@
   border-radius: 12px;
   text-transform: uppercase;
   letter-spacing: 0.1em;
+  text-decoration: none;
   cursor: not-allowed;
   backdrop-filter: blur(20px);
   transition: all 0.3s ease;
@@ -643,6 +630,70 @@
 @keyframes indicatorPulse {
   0%, 100% { transform: scale(1); }
   50% { transform: scale(1.1); }
+}
+
+/* Social Links */
+.socialLinks {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  animation: socialReveal 1s ease-out 3s both;
+}
+
+@keyframes socialReveal {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.socialLink {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1rem 1.5rem;
+  background: var(--surface);
+  color: var(--text-secondary);
+  font-family: 'Orbitron', monospace;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  backdrop-filter: blur(20px);
+  transition: all 0.3s ease;
+  transform-style: preserve-3d;
+}
+
+.socialLink:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent-cyan);
+  color: var(--text-primary);
+  box-shadow: 0 5px 20px var(--glow-secondary);
+}
+
+.socialIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  transition: all 0.3s ease;
+}
+
+.socialLink:hover .socialIcon {
+  transform: scale(1.1);
+  color: var(--accent-cyan);
+  filter: drop-shadow(0 0 10px var(--glow-secondary));
+}
+
+.socialIcon svg {
+  width: 100%;
+  height: 100%;
+  transition: all 0.3s ease;
 }
 
 /* Technical Readouts */
@@ -743,6 +794,15 @@
     width: 140px;
     height: 140px;
   }
+  
+  .socialLinks {
+    gap: 1.5rem;
+  }
+  
+  .socialLink {
+    padding: 0.8rem 1.2rem;
+    font-size: 0.75rem;
+  }
 }
 
 @media (max-width: 768px) {
@@ -804,12 +864,24 @@
   .commandInterface {
     flex-direction: column;
     gap: 1.5rem;
+    margin-bottom: 2.5rem;
   }
   
   .primaryCommand,
   .secondaryCommand {
     width: 100%;
     justify-content: center;
+  }
+  
+  .socialLinks {
+    gap: 1rem;
+    flex-direction: column;
+  }
+  
+  .socialLink {
+    width: 100%;
+    justify-content: center;
+    padding: 1rem 1.5rem;
   }
   
   .statusDisplay {
@@ -918,6 +990,20 @@
     font-size: 0.8rem;
   }
   
+  .socialLinks {
+    gap: 0.8rem;
+  }
+  
+  .socialLink {
+    padding: 0.8rem 1.2rem;
+    font-size: 0.7rem;
+  }
+  
+  .socialIcon {
+    width: 20px;
+    height: 20px;
+  }
+  
   .readout {
     padding: 0.6rem 0.8rem;
   }
@@ -976,6 +1062,8 @@
   .progressBar,
   .commandGlow,
   .comingSoonIndicator,
+  .socialLink,
+  .socialIcon,
   .readout,
   .readoutFill {
     animation-duration: 0.01ms !important;
